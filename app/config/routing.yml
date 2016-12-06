@@ -17,8 +17,3 @@ login_check:
 
 logout:
     path: /logout
-
-easy_admin_bundle:
-    resource: "@EasyAdminBundle/Controller/"
-    type:     annotation
-    prefix:   /admin
