@@ -1,0 +1,58 @@
+{% extends "CoreBundle:MonColloque:layout-menu.html.twig" %}
+
+{% block title %}
+    Confirmation du bus - {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="bloc">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Bus {{ onebus.id }} - {{ onebus.campus }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Es-tu sûr de vouloir choisir ce bus ?</h3>
+
+                {% set placesDispo = onebus.capacite - onebus.placesOccupees %}
+                <div class="bus">
+                    <ul class="list-unstyled">
+                        <li><strong>Place{% if placesDispo > 1 %}s{% endif %}
+                                disponible{% if placesDispo > 1 %}s{% endif %} :</strong> {{ placesDispo }}
+                            <small>/{{ onebus.capacite }}</small>
+                        </li>
+                    </ul>
+
+                    <h4>Occupants</h4>
+                    {% if occupants %}
+                        <ul>
+                            {% for occupant in occupants %}
+                                <li>{{ occupant.prenom }} {{ occupant.nom }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        Ce bus est vide !
+                    {% endif %}
+                </div>
+                <br>
+                <div class="alert alert-danger">
+                    Attention, ton choix est définitif, il n'est pas possible de le modifier ensuite.
+                </div>
+                <div class="row">
+                    <form action="#" method="post">
+                        <input type="hidden" value="{{ onebus.id }}" name="id">
+                        <div class="col-sm-6 text-right">
+                            <input type="submit" class="btn btn-success" value="Choisir ce bus">
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="{{ path('core_moncolloque_choosebus') }}" class="btn btn-danger">Annuler</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

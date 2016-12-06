@@ -1,0 +1,45 @@
+{% extends "CoreBundle:MonColloque:layout-menu.html.twig" %}
+
+{% block title %}
+    Choisir un thème - {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="bloc">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Choisis un thème pour ton groupe</h1>
+
+                <p>Il te faut ici choisir un thème pour ton groupe de Projet Professionnel. Vous avez obtenu toutes les
+                    indications lors de <a
+                            href="https://prezi.com/cipzk2spzdtj/projet-professionnel-colloque-entreprise/"
+                            target="_blank">la présentation de Mme Leroux</a> en cours.</p>
+                <p>Pour rappel, les groupes sont identiques aux groupes de PST, cela est nécessaire à l'organisation du
+                    Colloque.</p>
+                <p>Pour toutes questions concernant le Projet Professionnel et les groupes, contacter Mme Leroux par
+                    mail.</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for theme in themes %}
+                {% set placesDispo = theme.nbGroupes - theme.placesOccupees %}
+                <div class="col-lg-6 text-center">
+                    <div class="theme">
+                        <h3>{{ theme.title }}</h3>
+
+                        <p>Place{% if placesDispo > 1 %}s{% endif %} disponible{% if placesDispo > 1 %}s{% endif %}
+                            : {{ placesDispo }}</p>
+
+                        {% if placesDispo > 0 %}
+                            <a href="{{ path("core_moncolloque_choosentheme", {'id': theme.id }) }}"
+                               class="btn btn-success">Choisir ce thème</a>
+                        {% else %}
+                            <btn class="btn btn-danger disabled">Plus de place disponible</btn>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

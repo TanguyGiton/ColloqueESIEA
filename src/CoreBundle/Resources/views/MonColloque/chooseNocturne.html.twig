@@ -1,0 +1,46 @@
+{% extends "CoreBundle:MonColloque:layout-menu.html.twig" %}
+
+{% block title %}
+    Personnalise ta nocturne - {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="bloc">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Personnalise ta nocturne</h1>
+                <div class="alert alert-danger">
+                    Attention, <strong>il n'y a pas de page de confirmation pour ce choix</strong>, il sera définitif et
+                    il ne sera pas possible de le modifier ensuite.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for type in typesNocturne %}
+                {% set placesDispo = type.nbPlaces - type.occupation %}
+                <div class="col-lg-6">
+                    <div class="activite">
+                        <h3>{{ type.nom }}</h3>
+                        <p>
+                            {{ type.description|raw }}
+                        </p>
+                        <p>
+                            <strong>Disponible{% if placesDispo > 1 %}s{% endif %}</strong> : {{ placesDispo }}/
+                            <small>{{ type.nbPlaces }}</small>
+                        </p>
+                        <p class="text-center">
+                            {% if placesDispo > 0 %}
+                                <a href="{{ path('core_moncolloque_choosenocturne', { 'choix': type.slug, 'token': csrf_token('choix-nocturne')}) }}"
+                                   data-confirm="Es-tu sûr de vouloir choisir les {{ type.nom|lower }}s ?"
+                                   class="btn btn-success">Choisir les {{ type.slug|lower }}s</a>
+                            {% else %}
+                                <btn class="btn btn-danger disabled">Il n'y en a plus</btn>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

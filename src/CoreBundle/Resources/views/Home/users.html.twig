@@ -1,0 +1,10 @@
+{% for user in users %}
+    <p>------------------------------------------<br>
+        Nom : {{ user.nom }}<br>
+        Prenom : {{ user.prenom }}<br>
+        Prenom : {{ user.email }}<br>
+        Campus : {{ user.campus }}<br>
+        Active : {{ user.isActive }}<br>
+        ------------------------------------------</p>
+{% endfor %}
+

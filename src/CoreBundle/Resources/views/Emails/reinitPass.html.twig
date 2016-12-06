@@ -1,0 +1,18 @@
+<p>
+    Bonjour {{ user.prenom }},
+</p>
+
+<p>
+    Une demande de réinitialisation de mot de passe à été effectuée sur votre compte, pour définir votre nouveau mot de
+    passe, veuillez cliquer sur le lien ci-dessous :
+</p>
+
+<p>
+    <a href="{{ url('core_security_newpass', {pass: pass}) }}">{{ url('core_security_newpass', {pass: pass}) }}</a>
+</p>
+
+<p>
+    Cordialement,<br>
+    <br>
+    L'équipe Colloque 2016
+</p>

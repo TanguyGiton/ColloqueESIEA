@@ -1,0 +1,68 @@
+{% extends "CoreBundle:MonColloque:layout-menu.html.twig" %}
+
+{% block title %}
+    Confirmation de la chambre - {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="bloc">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Chambre {{ chambre.numero }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Es-tu sûr de vouloir choisir cette chambre ?</h3>
+
+                {% set placesDispo = chambre.capacite - chambre.placesOccupees %}
+                <div class="chambre {% if chambre.festive %}festive{% endif %}">
+                    <h3><span class="pull-left">{{ chambre.numero }}</span>
+                        <small class="pull-right">{{ chambre.nom }}</small>
+                    </h3>
+                    <div class="clearfix"></div>
+                    <br>
+
+                    <ul class="list-unstyled">
+                        <li><strong>Place{% if placesDispo > 1 %}s{% endif %}
+                                disponible{% if placesDispo > 1 %}s{% endif %} :</strong> {{ placesDispo }}
+                            <small>/{{ chambre.capacite }}</small>
+                        </li>
+                        <li><strong>Balcon</strong> : {% if chambre.balcon %}Oui{% else %}Non{% endif %}</li>
+                        {% if chambre.festive %}
+                            <li><strong>Proche du Salon Bar et du bruit.</strong></li>
+                        {% endif %}
+                    </ul>
+
+                    <h4>Occupants</h4>
+                    {% if occupants %}
+                        <ul>
+                            {% for occupant in occupants %}
+                                <li>{{ occupant.prenom }} {{ occupant.nom }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        Cette chambre est vide !
+                    {% endif %}
+                </div>
+                <br>
+                <div class="alert alert-danger">
+                    Attention, ton choix est définitif, il n'est pas possible de le modifier ensuite.
+                </div>
+                <div class="row">
+                    <form action="#" method="post">
+                        <input type="hidden" value="{{ chambre.id }}" name="id">
+                        <div class="col-sm-6 text-right">
+                            <input type="submit" class="btn btn-success" value="Choisir cette chambre">
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="{{ path('core_moncolloque_choosechambre') }}" class="btn btn-danger">Annuler</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "CoreBundle:MonColloque:layout-menu.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="bloc">
+                <h1>Mon Colloque</h1>
+
+                <p>
+                    Bonjour {{ app.user.prenom }}, et bienvenue dans ton espace pour paramétrer ton colloque.
+                </p>
+                <p>
+                    Pour accéder aux différentes rubriques, utilise le menu.
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+<div id="informationwrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8-offset-2 centered">
+                <h2>INFORMATIONS PRATIQUES</h2>
+                <h3>Les réponses à tes questions se trouvent sûrement ici.</h3>
+                {# <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> #}
+            </div><!-- /col-lg-8 -->
+        </div><!-- /row -->
+
+        <div class="row mt">
+            {% for information in listInformations %}
+                <div class="col-md-3 col-sm-6 information">
+                    {{ information.HTMLicon|raw }}
+                    <p>{{ information.title|upper }}<br/>
+                        <small>{{ information.subtitle }}</small>
+                    </p>
+                    <p class="text">{{ information.content }}</p>
+                </div>
+
+                {% if loop.index is divisible by(2) %}
+                    {% if loop.index is divisible by(4) %}
+                        <div class="clearfix"></div>
+                    {% else %}
+                        <div class="clearfix visible-sm-block"></div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div><!-- /row -->
+
+    </div><!--/container -->
+</div><!-- /informationwrap -->

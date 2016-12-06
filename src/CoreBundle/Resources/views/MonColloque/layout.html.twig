@@ -1,0 +1,52 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Mon Colloque - {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/core/css/backend.css') }}" type="text/css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <header>
+                    <div id="logo">
+                        <a href="{{ path('core_homepage') }}">
+                            <img src="{{ asset('bundles/core/img/logo-colloque-2017.png') }}"
+                                 class="img-responsive">
+                        </a>
+                    </div>
+                </header>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% block MonColloque_body %}
+
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <footer>
+                    Colloque 2017 - Contact : <a href="mailto:hanotaux@et.esiea.fr">hanotaux@et.esiea.fr</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/core/js/backend.js') }}"></script>
+{% endblock %}

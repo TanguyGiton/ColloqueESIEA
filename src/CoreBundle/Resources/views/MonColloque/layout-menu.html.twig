@@ -1,0 +1,14 @@
+{% extends "CoreBundle:MonColloque:layout.html.twig" %}
+
+{% block MonColloque_body %}
+    <div class="col-sm-4" id="menu">
+        {{ render(controller('CoreBundle:MonColloque:Menu')) }}
+    </div>
+    <div class="col-sm-8">
+        {% block MonColloque_content %}
+            <div class="well text-center">
+                <h2>CORPS</h2>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

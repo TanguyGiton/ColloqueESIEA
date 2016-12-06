@@ -1,0 +1,144 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="bloc">
+            <h3 class="text-center">Profil</h3>
+            <ul class="list-unstyled">
+                <li><a href="{{ path('core_moncolloque_home') }}">Accueil</a></li>
+                <li><a href="{{ logout_url('main') }}">Déconnexion</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="bloc">
+            <h3 class="text-center">Mon thème</h3>
+            {% if usersGroupe is not null %}
+                <p>
+                    Ton groupe est composé de :
+                <ul>
+                    {% for user in usersGroupe %}
+                        <li>{{ user.prenom }} {{ user.nom }}</li>
+                    {% endfor %}
+                </ul>
+                </p>
+                <p>
+                {% if theme is null %}
+                    <p class="text-center">
+                        <a href="{{ path('core_moncolloque_choosetheme') }}" class="btn btn-primary">Choisir un
+                            thème</a>
+                    </p>
+                {% else %}
+                    <p>
+                        Le thème choisi par votre groupe est : <strong>{{ theme.title }}</strong>
+                        (par {{ groupe.leader.prenom }} {{ groupe.leader.nom }}).
+                    </p>
+                {% endif %}
+                </p>
+            {% else %}
+                <p>Tu es dans aucun groupe. Il te faut contacter <a href="mailto:leroux@esiea.fr">Mme Leroux</a> pour
+                    intégrer un groupe.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="bloc">
+            <h3 class="text-center">Ma chambre</h3>
+            {% if chambre %}
+                {% set placesDispo = chambre.capacite - chambre.placesOccupees %}
+                <h3><span class="pull-left">{{ chambre.numero }}</span>
+                    <small class="pull-right">{{ chambre.nom }}</small>
+                </h3>
+                <div class="clearfix"></div>
+                <br>
+
+                <ul class="list-unstyled">
+                    <li><strong>Place{% if placesDispo > 1 %}s{% endif %} disponible{% if placesDispo > 1 %}s{% endif %}
+                            :</strong> {{ placesDispo }}
+                        <small>/{{ chambre.capacite }}</small>
+                    </li>
+                    <li><strong>Balcon</strong> : {% if chambre.balcon %}Oui{% else %}Non{% endif %}</li>
+                    {% if chambre.festive %}
+                        <li><strong>Proche du Salon Bar et du bruit.</strong></li>
+                    {% endif %}
+                </ul>
+
+                <h4>Occupants</h4>
+                {% if occupants %}
+                    <ul>
+                        {% for occupant in occupants %}
+                            <li>{{ occupant.prenom }} {{ occupant.nom }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    Cette chambre est vide !
+                {% endif %}
+            {% else %}
+                <p class="text-center">
+                    <a href="{{ path('core_moncolloque_choosechambre') }}" class="btn btn-primary">Choisir une
+                        chambre</a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="bloc">
+            <h3 class="text-center">Mes activités</h3>
+            {% if pack %}
+                <ul class="list-unstyled">
+                    <li><strong>Jour</strong> : {{ pack.date|date('l')|trans }}</li>
+                    <br>
+                    {% for activite in pack.activites %}
+                        <li><strong>{{ activite.nom }}</strong>
+                            <p>
+                                {{ activite.description|raw }}
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-center">
+                    <a href="{{ path('core_moncolloque_chooseactivite') }}" class="btn btn-primary">Choisir les
+                        activités</a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="bloc">
+            <h3 class="text-center">Ma nocturne</h3>
+            {% if nocturne %}
+                <h2 class="text-center">{{ nocturne|capitalize }}</h2>
+            {% else %}
+                <p class="text-center">
+                    <a href="{{ path('core_moncolloque_choosenocturne') }}" class="btn btn-primary">Personnaliser la
+                        nocturne</a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="bloc">
+            <h3 class="text-center">Mon bus</h3>
+            {% if onebus %}
+                <h4 class="text-center">Bus {{ onebus.id }} - {{ onebus.campus }}</h4>
+                <button class="btn btn-default text-center center-block" type="button" data-toggle="collapse"
+                        data-target="#occupantsBus" aria-expanded="false" aria-controls="collapseExample">
+                    Afficher les occupants
+                </button>
+                <div class="collapse" id="occupantsBus">
+                    <p>
+                    <ul>
+                        {% for occupant in occupantsBus %}
+                            <li>{{ occupant.prenom }} {{ occupant.nom }}</li>
+                        {% endfor %}
+                    </ul>
+                    </p>
+                </div>
+
+            {% else %}
+                <p class="text-center">
+                    <a href="{{ path('core_moncolloque_choosebus') }}" class="btn btn-primary">Choisir le bus</a>
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</div>

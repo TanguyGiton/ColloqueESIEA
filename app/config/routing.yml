@@ -1,0 +1,18 @@
+core_annotation:
+    resource: "@CoreBundle/Controller/"
+    type:     annotation
+
+core:
+    resource: "@CoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    path:     /login
+    defaults:
+        _controller: "CoreBundle:Security:login"
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout

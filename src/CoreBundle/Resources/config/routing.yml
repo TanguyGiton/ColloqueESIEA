@@ -1,0 +1,70 @@
+core_moncolloque_home:
+    path: /mon-colloque
+    defaults: { _controller: CoreBundle:MonColloque:index }
+
+core_homepage_show:
+    path: /show
+    defaults : 
+        _controller: CoreBundle:Home:show
+
+core_moncolloque_choosetheme:
+    path: /mon-colloque/choisir-theme
+    defaults:
+        _controller: CoreBundle:MonColloque:chooseTheme
+
+core_moncolloque_choosentheme:
+    path: /mon-colloque/confirmation-theme/{id}
+    defaults:
+        _controller: CoreBundle:MonColloque:choosenTheme
+
+core_moncolloque_choosechambre:
+    path: /mon-colloque/choisir-chambre
+    defaults:
+        _controller: CoreBundle:MonColloque:chooseChambre
+
+core_moncolloque_choosenchambre:
+    path: /mon-colloque/confirmation-chambre/{id}
+    defaults:
+        _controller: CoreBundle:MonColloque:choosenChambre
+
+core_moncolloque_chooseactivite:
+    path: /mon-colloque/choisir-activites
+    defaults:
+        _controller: CoreBundle:MonColloque:chooseActivite
+
+core_moncolloque_choosenpack:
+    path: /mon-colloque/confirmation-pack-activites/{id}
+    defaults:
+        _controller: CoreBundle:MonColloque:choosenPackActivites
+
+core_moncolloque_choosenocturne:
+    path: /mon-colloque/choisir-nocturne
+    defaults:
+        _controller: CoreBundle:MonColloque:chooseNocturne
+
+core_moncolloque_choosebus:
+    path: /mon-colloque/choisir-bus
+    defaults:
+        _controller: CoreBundle:MonColloque:chooseBus
+
+core_moncolloque_choosenbus:
+    path: /mon-colloque/confirmation-bus/{id}
+    defaults:
+        _controller: CoreBundle:MonColloque:choosenBus
+
+core_security_activate:
+    path: /activation-compte
+    defaults:
+        _controller: CoreBundle:Security:activate
+        page: 'activate'
+
+core_security_reinit:
+    path: /mot-de-passe-oublie
+    defaults:
+        _controller: CoreBundle:Security:activate
+        page: 'reinit'
+
+core_security_newpass:
+    path: /u/{pass}
+    defaults:
+        _controller: CoreBundle:Security:newPass

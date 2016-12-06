@@ -1,0 +1,18 @@
+<p>
+    Bonjour {{ user.prenom }},
+</p>
+
+<p>
+    Ta demande d'activation a bien été prise en compte, il te reste encore une petite étape pour pouvoir te connecter.
+    Clique sur le lien ci-dessous pour définir ton mot de passe :
+</p>
+
+<p>
+    <a href="{{ url('core_security_newpass', {pass: pass}) }}">{{ url('core_security_newpass', {pass: pass}) }}</a>
+</p>
+
+<p>
+    Cordialement,<br>
+    <br>
+    L'équipe Colloque 2016
+</p>

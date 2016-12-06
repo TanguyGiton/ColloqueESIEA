@@ -1,0 +1,82 @@
+{% extends "CoreBundle:MonColloque:layout-nomenu.html.twig" %}
+
+{% block title %}
+    Connexion - {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="bloc">
+                <h2>Connexion</h2>
+                <p>Pour accéder à ton espace personnel, tu dois te connecter en entrant tes identifiants ci-dessous.
+                    Pour les obtenir, tu dois d'abord <a href="{{ path('core_security_activate') }}">activer ton
+                        compte</a>.</p>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.message|trans }}</div>
+                {% endif %}
+                {% for label, flashes in app.session.flashbag.all %}
+                    {% for flash in flashes %}
+                        <div class="alert alert-{{ label }}">
+                            {{ flash }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                <form action="{{ path('login_check') }}" method="post" class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="username" name="_username" placeholder="Email"
+                                   value="{{ last_username }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">Mot de passe</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="password" name="_password"
+                                   placeholder="Mot de passe">
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <div class="form-group">
+                        <div class="col-sm-9 col-sm-offset-3">
+                            <button type="submit" class="btn btn-primary">Connexion</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 col-sm-6">
+                    <div class="bloc">
+                        <h3>Activer mon compte</h3>
+                        <p>
+                            Pour te connecter, il est nécessaire d'activer ton compte au préalable.
+                        </p>
+                        <div class="text-center">
+                            <a href="{{ path('core_security_activate') }}" title="Activer ton compte"
+                               class="btn btn-default">Activer mon compte</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-6">
+                    <div class="bloc">
+                        <h3>Mot de passe oublié</h3>
+                        <p>
+                            Si tu as oublié ton mot de passe, il est possible de le réinitialiser.
+                        </p>
+                        <div class="text-center">
+                            <a href="{{ path('core_security_reinit') }}" title="Réinitialiser ton mot de passe"
+                               class="btn btn-default">Récupérer mon mot de passe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "CoreBundle:MonColloque:layout-menu.html.twig" %}
+
+{% block title %}
+    Choisir un bus - {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="bloc">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Choisis un bus</h1>
+                <p>
+                    Clique sur "choisir ce bus" pour voir la liste de ses occupants ! Tu pourra également voir la liste
+                    des occupants au fur et à mesure une fois ton bus choisi.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            {% for onebus in bus %}
+                {% set placesDispo = onebus.capacite - onebus.placesOccupees %}
+                <div class="col-lg-6">
+                    <div class="bus">
+                        <h3>Bus {{ onebus.id }} - {{ onebus.campus }}</h3>
+                        <ul class="list-unstyled">
+                            <li><strong>Place{% if placesDispo > 1 %}s{% endif %}
+                                    disponible{% if placesDispo > 1 %}s{% endif %} :</strong> {{ placesDispo }}
+                                <small>/{{ onebus.capacite }}</small>
+                            </li>
+                        </ul>
+                        <p class="text-center">
+                            {% if placesDispo > 0 %}
+                                <a href="{{ path('core_moncolloque_choosenbus', {'id':onebus.id} ) }}"
+                                   class="btn btn-success">Choisir ce bus</a>
+                            {% else %}
+                                <btn class="btn btn-danger disabled">Plus de place disponible</btn>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

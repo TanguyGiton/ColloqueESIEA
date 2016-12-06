@@ -1,0 +1,46 @@
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user:
+                        password: $2y$12$NXp7vX.TpQVebaHFN9hTdOJpSqjPLPJQTAn9pDnD3O3FJpMYlCrxK
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: $2y$12$4NhtaJECV93P9WVQjAGUjOQj4hES18Jgr1IMSCVMp79DtNKDlyIr6
+                        roles: 'ROLE_ADMIN'
+        db_users:
+            entity:
+                class: CoreBundle:User
+                property: email
+
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+        CoreBundle\Entity\User:
+            algorithm: bcrypt
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            provider: db_users
+            anonymous: true
+            form_login:
+                login_path: login
+                check_path: login_check
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: /logout
+                target: /
+                csrf_token_generator: security.csrf.token_manager
+
+    access_control:
+      - {path: ^/mon-colloque, roles: ROLE_USER}

@@ -1,0 +1,81 @@
+{% extends "CoreBundle:MonColloque:layout-nomenu.html.twig" %}
+
+{% block title %}
+    Activation - {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="bloc text-center">
+                <h1>
+                    {% if page == 'activate' %}
+                        Activer mon compte
+                    {% elseif page == 'reinit' %}
+                        Mot de passe oublié
+                    {% endif %}
+
+                </h1>
+                {% set flash = app.session.flashbag.get('success') %}
+                {% if flash|length == 0 %}
+                    <p class="text-center">
+                        {% if page == 'activate' %}
+                            Pour activer ton compte, entre ton adresse mail ci-dessous.
+                        {% elseif page == 'reinit' %}
+                            Pour récupérer ton mot de passe, entre ton adresse mail ci-dessous.
+                        {% endif %}
+
+
+                    <div class="row">
+                        <div class="text-center">
+
+                            {% for label, flashes in app.session.flashbag.all %}
+                                {% for flash in flashes %}
+                                    <div class="alert alert-{{ label }}">
+                                        {{ flash }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {{ form_start(form, {
+                                'attr' : {
+                                    'class': 'form-inline'
+                                }
+                            }) }}
+                            {{ form_errors(form) }}
+                            <div class="form-group">
+                                {{ form_widget(form.email, {
+                                    'attr' : {
+                                        'class': 'form-control',
+                                        'placeholder': 'Email'
+                                    }
+                                }) }}
+                            </div>
+
+                            {{ form_widget(form.submit, {
+                                'attr' : {
+                                    'class': 'btn btn-primary'
+                                }
+                            }) }}
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                    </p>
+                {% else %}
+                    {% for label, messsage in flash %}
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <div class="alert alert-success">
+                                    {{ messsage }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <br>
+                <p>
+                    <a href="{{ path('login') }}">Retourner sur la page de connexion</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

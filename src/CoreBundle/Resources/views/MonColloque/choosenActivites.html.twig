@@ -1,0 +1,57 @@
+{% extends "CoreBundle:MonColloque:layout-menu.html.twig" %}
+
+{% block title %}
+    Confirmation du pack d'activités - {{ parent() }}
+{% endblock %}
+
+{% block MonColloque_content %}
+    <div class="bloc">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Confirmation du pack d'activités</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Es-tu sûr de vouloir choisir ce pack d'activités ?</h3>
+
+                {% set placesDispo = pack.nbPlaces - pack.occupation %}
+                <div class="activite">
+                    <ul class="list-unstyled">
+                        <li><strong>Place{% if placesDispo > 1 %}s{% endif %}
+                                disponible{% if placesDispo > 1 %}s{% endif %} :</strong> {{ placesDispo }}
+                            <small>/{{ pack.nbPlaces }}</small>
+                        </li>
+                        <br>
+                        <li><strong>Jour</strong> : {{ pack.date|date('l')|trans }}</li>
+                        <br>
+                        {% for activite in pack.activites %}
+                            <li><strong>{{ activite.nom }}</strong>
+                                <p>
+                                    {{ activite.description|raw }}
+                                </p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <br>
+                <div class="alert alert-danger">
+                    Attention, ton choix est définitif, il n'est pas possible de le modifier ensuite.
+                </div>
+                <div class="row">
+                    <form action="#" method="post">
+                        <input type="hidden" value="{{ pack.id }}" name="id">
+                        <div class="col-sm-6 text-right">
+                            <input type="submit" class="btn btn-success" value="Choisir ce pack d'activités">
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="{{ path('core_moncolloque_chooseactivite') }}" class="btn btn-danger">Annuler</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
