@@ -74,3 +74,18 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
+
+easy_admin:
+    entities:
+        User:
+            class: CoreBundle\Entity\User
+        Bus:
+            class: CoreBundle\Entity\Bus
+        Chambre:
+            class: CoreBundle\Entity\Chambre
+        Groupe:
+            class: CoreBundle\Entity\Groupe
+        PackActivites:
+            class: CoreBundle\Entity\PackActivites
+        Theme:
+            class: CoreBundle\Entity\Theme

@@ -64,30 +64,6 @@ class PackActivites
     }
 
     /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return PackActivites
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
      * Get nbPlaces
      *
      * @return integer
@@ -120,7 +96,7 @@ class PackActivites
      */
     public function addActivite(\CoreBundle\Entity\Activite $activite)
     {
-        if (sizeof($this->activites) < 2) {
+        if (count($this->activites) < 2) {
             $this->activites[] = $activite;
         }
 
@@ -135,16 +111,6 @@ class PackActivites
     public function removeActivite(\CoreBundle\Entity\Activite $activite)
     {
         $this->activites->removeElement($activite);
-    }
-
-    /**
-     * Get activites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getActivites()
-    {
-        return $this->activites;
     }
 
     /**
@@ -163,5 +129,51 @@ class PackActivites
         $this->occupation = $occupation;
     }
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $string = $this->getDate()->format('d/m/Y') . ' - ';
 
+        foreach ($this->getActivites() as $activite) {
+            $string .= $activite->getNom() . ', ';
+        }
+
+        return $string;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return PackActivites
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get activites
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getActivites()
+    {
+        return $this->activites;
+    }
 }

@@ -17,7 +17,8 @@ class User implements UserInterface
 
     const CAMPUS_PARIS = 'Paris';
     const CAMPUS_LAVAL = 'Laval';
-    const CAMPUS_UFA = 'UFA';
+    const CAMPUS_UFA_PARIS = 'UFA Paris';
+    const CAMPUS_UFA_LAVAL = 'UFA Laval';
     //const CAMPUS_INTER = 'INTER';
 
     const NOCTURNE_SKI = 'ski';
@@ -188,54 +189,6 @@ class User implements UserInterface
     public function setIsActive($isActive)
     {
         $this->isActive = $isActive;
-
-        return $this;
-    }
-
-    /**
-     * Get nom
-     *
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return User
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get prenom
-     *
-     * @return string
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * Set prenom
-     *
-     * @param string $prenom
-     *
-     * @return User
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
 
         return $this;
     }
@@ -520,6 +473,62 @@ class User implements UserInterface
     public function setBus(\CoreBundle\Entity\Bus $bus = null)
     {
         $this->bus = $bus;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getPrenom() . ' ' . $this->getNom();
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return User
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return User
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
 
         return $this;
     }

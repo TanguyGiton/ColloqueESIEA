@@ -30,6 +30,8 @@ class Activite
     private $nom;
 
     /**
+     * @var string
+     *
      * @Gedmo\Slug(fields={"nom"})
      * @ORM\Column(name="slug", length=128, unique=true)
      */
@@ -136,6 +138,9 @@ class Activite
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->slug;

@@ -5,11 +5,8 @@ security:
         in_memory:
             memory:
                 users:
-                    user:
-                        password: $2y$12$NXp7vX.TpQVebaHFN9hTdOJpSqjPLPJQTAn9pDnD3O3FJpMYlCrxK
-                        roles: 'ROLE_USER'
                     admin:
-                        password: $2y$12$4NhtaJECV93P9WVQjAGUjOQj4hES18Jgr1IMSCVMp79DtNKDlyIr6
+                        password: $2y$12$S3iXU0GP8tXTlOpf/vzjV.Xl40lk9wLrrhOHB3FWVJQu5.31tjVOy
                         roles: 'ROLE_ADMIN'
         db_users:
             entity:
@@ -29,6 +26,12 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        admin:
+            pattern: ^/admin
+            provider: in_memory
+            anonymous: ~
+            http_basic: ~
+
         main:
             pattern: ^/
             provider: db_users
@@ -44,3 +47,4 @@ security:
 
     access_control:
       - {path: ^/mon-colloque, roles: ROLE_USER}
+      - {path: ^/admin, roles: ROLE_ADMIN}

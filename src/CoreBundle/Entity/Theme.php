@@ -64,30 +64,6 @@ class Theme
     }
 
     /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Theme
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
      * Get nbGroupes
      *
      * @return int
@@ -107,6 +83,38 @@ class Theme
     public function setNbGroupes($nbGroupes)
     {
         $this->nbGroupes = $nbGroupes;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Theme
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
 
         return $this;
     }

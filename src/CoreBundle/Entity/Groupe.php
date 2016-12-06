@@ -59,30 +59,6 @@ class Groupe
     }
 
     /**
-     * Get numero
-     *
-     * @return integer
-     */
-    public function getNumero()
-    {
-        return $this->numero;
-    }
-
-    /**
-     * Set numero
-     *
-     * @param integer $numero
-     *
-     * @return Groupe
-     */
-    public function setNumero($numero)
-    {
-        $this->numero = $numero;
-
-        return $this;
-    }
-
-    /**
      * Get theme
      *
      * @return \CoreBundle\Entity\Theme
@@ -102,6 +78,42 @@ class Groupe
     public function setTheme(\CoreBundle\Entity\Theme $theme = null)
     {
         $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        $string = (string)$this->getNumero();
+        if (NULL !== $this->leader) {
+            $string .= ' - ' . $this->getLeader();
+        }
+        return $string;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return integer
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     *
+     * @return Groupe
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
 
         return $this;
     }

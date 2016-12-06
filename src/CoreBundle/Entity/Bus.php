@@ -43,17 +43,6 @@ class Bus
      */
     private $placesOccupees;
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
     /**
      * Get capacite
      *
@@ -76,6 +65,27 @@ class Bus
         $this->capacite = $capacite;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPlacesOccupees()
+    {
+        return $this->placesOccupees;
+    }
+
+    /**
+     * @param int $placesOccupees
+     */
+    public function setPlacesOccupees($placesOccupees)
+    {
+        $this->placesOccupees = $placesOccupees;
+    }
+
+    public function __toString()
+    {
+        return $this->getCampus() . ' ' . $this->getId();
     }
 
     /**
@@ -103,20 +113,12 @@ class Bus
     }
 
     /**
+     * Get id
+     *
      * @return int
      */
-    public function getPlacesOccupees()
+    public function getId()
     {
-        return $this->placesOccupees;
+        return $this->id;
     }
-
-    /**
-     * @param int $placesOccupees
-     */
-    public function setPlacesOccupees($placesOccupees)
-    {
-        $this->placesOccupees = $placesOccupees;
-    }
-
-
 }
