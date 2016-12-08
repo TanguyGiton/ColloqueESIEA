@@ -73,7 +73,7 @@
                 {% endif %}
             {% else %}
                 <p class="text-center">
-                    <a href="{{ path('core_moncolloque_choosechambre') }}" class="btn btn-primary">Choisir une
+                    <a href="{{ path('core_moncolloque_choosechambre') }}" class="btn btn-primary" disabled="disabled">Choisir une
                         chambre</a>
                 </p>
             {% endif %}
@@ -96,7 +96,7 @@
                 </ul>
             {% else %}
                 <p class="text-center">
-                    <a href="{{ path('core_moncolloque_chooseactivite') }}" class="btn btn-primary">Choisir les
+                    <a href="{{ path('core_moncolloque_chooseactivite') }}" class="btn btn-primary" disabled="disabled">Choisir les
                         activités</a>
                 </p>
             {% endif %}
@@ -109,7 +109,7 @@
                 <h2 class="text-center">{{ nocturne|capitalize }}</h2>
             {% else %}
                 <p class="text-center">
-                    <a href="{{ path('core_moncolloque_choosenocturne') }}" class="btn btn-primary">Personnaliser la
+                    <a href="{{ path('core_moncolloque_choosenocturne') }}" class="btn btn-primary" disabled="disabled">Personnaliser la
                         nocturne</a>
                 </p>
             {% endif %}
@@ -120,8 +120,8 @@
             <h3 class="text-center">Mon bus</h3>
             {% if onebus %}
                 <h4 class="text-center">Bus {{ onebus.id }} - {{ onebus.campus }}</h4>
-                <button class="btn btn-default text-center center-block" type="button" data-toggle="collapse"
-                        data-target="#occupantsBus" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-default text-center center-block " type="button" data-toggle="collapse"
+                        data-target="#occupantsBus" aria-expanded="false" aria-controls="collapseExample" disabled="disabled">
                     Afficher les occupants
                 </button>
                 <div class="collapse" id="occupantsBus">
@@ -136,7 +136,7 @@
 
             {% else %}
                 <p class="text-center">
-                    <a href="{{ path('core_moncolloque_choosebus') }}" class="btn btn-primary">Choisir le bus</a>
+                    <a href="{{ path('core_moncolloque_choosebus') }}" class="btn btn-primary" disabled="disabled">Choisir le bus</a>
                 </p>
             {% endif %}
         </div>
