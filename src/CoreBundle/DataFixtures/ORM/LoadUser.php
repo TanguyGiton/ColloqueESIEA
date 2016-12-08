@@ -328,13 +328,11 @@ class LoadUser implements FixtureInterface, ContainerAwareInterface
                     $user->setCampus(User::CAMPUS_LAVAL);
                     break;
                 case 'U':
-                    $user->setCampus(User::CAMPUS_UFA_PARIS);
+                    $user->setCampus(User::CAMPUS_UFA);
                     break;
-                case 'UL':
-                    $user->setCampus(User::CAMPUS_UFA_LAVAL);
-                /*case 'I':
+                case 'I':
                     $user->setCampus(User::CAMPUS_INTER);
-                    break;*/
+                    break;
             }
 
             //$encoder = $this->container->get('security.password_encoder');

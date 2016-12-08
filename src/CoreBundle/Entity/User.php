@@ -17,9 +17,8 @@ class User implements UserInterface
 
     const CAMPUS_PARIS = 'Paris';
     const CAMPUS_LAVAL = 'Laval';
-    const CAMPUS_UFA_PARIS = 'UFA Paris';
-    const CAMPUS_UFA_LAVAL = 'UFA Laval';
-    //const CAMPUS_INTER = 'INTER';
+    const CAMPUS_UFA = 'UFA';
+    const CAMPUS_INTER = 'Etranger';
 
     const NOCTURNE_SKI = 'ski';
     const NOCTURNE_RAQUETTE = 'raquette';

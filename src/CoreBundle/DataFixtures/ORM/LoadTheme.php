@@ -24,11 +24,10 @@ class LoadTheme implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $themes = [
-            ['title' => 'Innovation', 'nbGroupes' => 9],
-            ['title' => 'Entreprenariat', 'nbGroupes' => 9],
-            ['title' => 'Vente', 'nbGroupes' => 9],
-            ['title' => 'Conduite du changement', 'nbGroupes' => 9],
-            ['title' => 'Réussir le numérique', 'nbGroupes' => 10],
+            ['title' => 'Innovation', 'nbGroupes' => 55],
+            ['title' => 'Mixité et parité', 'nbGroupes' => 55],
+            ['title' => 'Développement durable', 'nbGroupes' => 55],
+            ['title' => 'Ouverture interculturelle', 'nbGroupes' => 55],
         ];
 
         foreach ($themes as $theme) {
