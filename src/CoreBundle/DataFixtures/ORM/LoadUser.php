@@ -33,61 +33,61 @@ class LoadUser implements FixtureInterface, ContainerAwareInterface
      */
     public function load(ObjectManager $manager)
     {
-        $groupes = [];
-        $groupes[] = new Groupe(0);
-        $groupes[] = new Groupe(1);
-        $groupes[] = new Groupe(2);
-        $groupes[] = new Groupe(3);
-        $groupes[] = new Groupe(4);
-        $groupes[] = new Groupe(5);
-        $groupes[] = new Groupe(6);
-        $groupes[] = new Groupe(7);
-        $groupes[] = new Groupe(8);
-        $groupes[] = new Groupe(9);
-        $groupes[] = new Groupe(10);
-        $groupes[] = new Groupe(11);
-        $groupes[] = new Groupe(12);
-        $groupes[] = new Groupe(13);
-        $groupes[] = new Groupe(14);
-        $groupes[] = new Groupe(15);
-        $groupes[] = new Groupe(16);
-        $groupes[] = new Groupe(17);
-        $groupes[] = new Groupe(18);
-        $groupes[] = new Groupe(19);
-        $groupes[] = new Groupe(20);
-        $groupes[] = new Groupe(21);
-        $groupes[] = new Groupe(22);
-        $groupes[] = new Groupe(23);
-        $groupes[] = new Groupe(24);
-        $groupes[] = new Groupe(25);
-        $groupes[] = new Groupe(26);
-        $groupes[] = new Groupe(27);
-        $groupes[] = new Groupe(28);
-        $groupes[] = new Groupe(29);
-        $groupes[] = new Groupe(30);
-        $groupes[] = new Groupe(31);
-        $groupes[] = new Groupe(32);
-        $groupes[] = new Groupe(33);
-        $groupes[] = new Groupe(34);
-        $groupes[] = new Groupe(35);
-        $groupes[] = new Groupe(36);
-        $groupes[] = new Groupe(37);
-        $groupes[] = new Groupe(38);
-        $groupes[] = new Groupe(39);
-        $groupes[] = new Groupe(40);
-        $groupes[] = new Groupe(41);
-        $groupes[] = new Groupe(42);
-        $groupes[] = new Groupe(43);
-        $groupes[] = new Groupe(44);
-        $groupes[] = new Groupe(45);
-        $groupes[] = new Groupe(46);
-        $groupes[] = new Groupe(47);
-        $groupes[] = new Groupe(48);
-        $groupes[] = new Groupe(49);
-        $groupes[] = new Groupe(50);
-        $groupes[] = new Groupe(51);
-        $groupes[] = new Groupe(52);
-        $groupes[] = new Groupe(53);
+        $groupes = [];// tout déplacer d'un cran.. a faire
+        $groupes[] = new Groupe(0,0);
+        $groupes[] = new Groupe(1,4);
+        $groupes[] = new Groupe(2,5);
+        $groupes[] = new Groupe(3,4);
+        $groupes[] = new Groupe(4,4);
+        $groupes[] = new Groupe(5,4);//5
+        $groupes[] = new Groupe(6,4);
+        $groupes[] = new Groupe(7,4);
+        $groupes[] = new Groupe(8,4);
+        $groupes[] = new Groupe(9,6);
+        $groupes[] = new Groupe(10,5);//10
+        $groupes[] = new Groupe(11,4);
+        $groupes[] = new Groupe(12,4);
+        $groupes[] = new Groupe(13,5);
+        $groupes[] = new Groupe(14,0);
+        $groupes[] = new Groupe(15,6);//15
+        $groupes[] = new Groupe(16,5);
+        $groupes[] = new Groupe(17,4);
+        $groupes[] = new Groupe(18,5);
+        $groupes[] = new Groupe(19,4);
+        $groupes[] = new Groupe(20,5);//20
+        $groupes[] = new Groupe(21,6);
+        $groupes[] = new Groupe(22,4);
+        $groupes[] = new Groupe(23,5);
+        $groupes[] = new Groupe(24,6);
+        $groupes[] = new Groupe(25,5);//25
+        $groupes[] = new Groupe(26,3);
+        $groupes[] = new Groupe(27,3);
+        $groupes[] = new Groupe(28,6);
+        $groupes[] = new Groupe(29,0);
+        $groupes[] = new Groupe(30,6);//30
+        $groupes[] = new Groupe(31,0);
+        $groupes[] = new Groupe(32,0);
+        $groupes[] = new Groupe(33,5);
+        $groupes[] = new Groupe(34,0);
+        $groupes[] = new Groupe(35,5);//35
+        $groupes[] = new Groupe(36,5);
+        $groupes[] = new Groupe(37,0);
+        $groupes[] = new Groupe(38,5);
+        $groupes[] = new Groupe(39,6);
+        $groupes[] = new Groupe(40,0);
+        $groupes[] = new Groupe(41,4);
+        $groupes[] = new Groupe(42,4);
+        $groupes[] = new Groupe(43,4);
+        $groupes[] = new Groupe(44,4);
+        $groupes[] = new Groupe(45,4);
+        $groupes[] = new Groupe(46,5);
+        $groupes[] = new Groupe(47,6);
+        $groupes[] = new Groupe(48,6);
+        $groupes[] = new Groupe(49,7);
+        $groupes[] = new Groupe(50,6);
+        $groupes[] = new Groupe(51,6);
+        $groupes[] = new Groupe(52,6);
+        $groupes[] = new Groupe(53,6);
 
         $etudiants = [
             ['nom' => 'BERNARD', 'prenom' => 'Hippolyte', 'email' => 'hbernard@et.esiea.fr', 'groupe' => $groupes[1], 'campus' => 'L'],
@@ -309,7 +309,7 @@ class LoadUser implements FixtureInterface, ContainerAwareInterface
             ['nom' => 'NGUYEN', 'prenom' => 'Wing-Yen Nathalie', 'email' => 'wnguyen@et.esiea.fr', 'groupe' => $groupes[53], 'campus' => 'U'],
             ['nom' => 'NGUYEN', 'prenom' => 'Thanh Tam', 'email' => 'thnguyen@et.esiea.fr', 'groupe' => $groupes[53], 'campus' => 'U'],
             ['nom' => 'SENDAL', 'prenom' => 'Farouk', 'email' => 'sendal@et.esiea.fr', 'groupe' => $groupes[53], 'campus' => 'U'],
-            ['nom' => 'SOUMARE', 'prenom' => 'Ahmed', 'email' => 'asoumare@et.esiea.fr', 'groupe' => $groupes[53], 'campus' => 'U']
+            ['nom' => 'SOUMARE', 'prenom' => 'Ahmed', 'email' => 'asoumare@et.esiea.fr', 'groupe' => $groupes[53], 'campus' => 'U'],
         ];
 
         foreach ($etudiants as $etudiant) {

@@ -49,12 +49,17 @@ class MonColloqueController extends Controller
             ->findAll();
 
         foreach ($themes as $theme) {
-            $theme->setPlacesOccupees(
-                $this
-                    ->getDoctrine()
-                    ->getRepository('CoreBundle:Groupe')
-                    ->countGroupesOnTheme($theme->getId())
-            );
+            $GroupesActuel = $this
+                ->getDoctrine()
+                ->getRepository('CoreBundle:Groupe')
+                ->findBy(
+                    array('theme' => "$theme"));
+            $cpt=0;
+            foreach ($GroupesActuel as $grp) {
+                $cpt+=$grp->getNombreEleve();
+            }
+            $nbGroupesActuel = $cpt;
+            $theme->setPlacesOccupees($nbGroupesActuel);
         }
 
         return $this->render('CoreBundle:MonColloque:chooseTheme.html.twig', [
@@ -62,6 +67,11 @@ class MonColloqueController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function choosenThemeAction(Request $request, $id)
     {
 
@@ -78,12 +88,19 @@ class MonColloqueController extends Controller
             throw new NotFoundHttpException("Ce thème n'existe pas.");
         }
 
-        $nbGroupeActuel = $this
+        $GroupesActuel = $this
             ->getDoctrine()
             ->getRepository('CoreBundle:Groupe')
-            ->countGroupesOnTheme($id);
+            ->findBy(
+                array('theme' => "$theme"));
+            $cpt=0;
+            foreach ($GroupesActuel as $grp) {
+                $cpt+=$grp->getNombreEleve();
+            }
+        $nbGroupesActuel = $cpt;
 
-        if ($nbGroupeActuel >= $theme->getNbGroupes()) {
+
+        if ($nbGroupesActuel >= $theme->getnbGroupes()) {
             $this->addFlash('warning', 'Ce thème est déjà  complet.');
             return $this->redirectToRoute('core_moncolloque_choosetheme');
         }
@@ -104,7 +121,7 @@ class MonColloqueController extends Controller
 
         return $this->render('@Core/MonColloque/choosenTheme.html.twig', [
             'theme' => $theme,
-            'nbGroupesActuel' => $nbGroupeActuel
+            'nbGroupesActuel' => $nbGroupesActuel
         ]);
     }
 

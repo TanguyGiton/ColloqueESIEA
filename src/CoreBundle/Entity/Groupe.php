@@ -26,6 +26,13 @@ class Groupe
      *
      * @ORM\Column(name="numero", type="integer")
      */
+    private $nombreEleve;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nombreEleve", type="integer")
+     */
     private $numero;
 
     /**
@@ -42,9 +49,10 @@ class Groupe
      * Groupe constructor.
      * @param int $numero
      */
-    public function __construct($numero)
+    public function __construct($numero, $nombreEleve)
     {
         $this->numero = $numero;
+        $this->nombreEleve = $nombreEleve;
     }
 
 
@@ -138,6 +146,29 @@ class Groupe
     public function setLeader(\CoreBundle\Entity\User $leader = null)
     {
         $this->leader = $leader;
+
+        return $this;
+    }
+    /**
+     * Get nombreEleve
+     *
+     * @return integer
+     */
+    public function getNombreEleve()
+    {
+        return $this->nombreEleve;
+    }
+
+    /**
+     * Set nombreEleve
+     *
+     * @param integer $nombreEleve
+     *
+     * @return Groupe
+     */
+    public function setNombreEleve($nombreEleve)
+    {
+        $this->nombreEleve = $nombreEleve;
 
         return $this;
     }

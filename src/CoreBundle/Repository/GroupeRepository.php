@@ -23,4 +23,16 @@ class GroupeRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    public function countPersonOnGroupe($grp)
+    {
+
+        //createQuery("SELECT COUNT(*) FROM CoreBundle:User WHERE groupe = $grp");
+               /* ->createQueryBuilder('u')
+                ->addSelect('COUNT(u)')
+                ->where('u.groupe = :id')
+                ->setParameter('id', $grp)
+                ->getQuery()
+                ->getSingleScalarResult();*/
+    }
 }
