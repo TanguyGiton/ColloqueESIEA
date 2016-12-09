@@ -104,6 +104,9 @@ class MonColloqueController extends Controller
             return $this->redirectToRoute('core_moncolloque_choosetheme');
         }
 
+        $this->addFlash('warning', 'Les inscriptions aux thèmes ne sont pas encore ouvertes');
+        return $this->redirectToRoute('core_moncolloque_choosetheme');
+
         if ($request->isMethod('POST')) {
             if ($request->request->getInt('id') == $id) {
                 $this->getUser()->getGroupe()->setTheme($theme);
