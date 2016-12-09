@@ -49,14 +49,14 @@ class LoadUser implements FixtureInterface, ContainerAwareInterface
         $groupes[] = new Groupe(12,4);
         $groupes[] = new Groupe(13,5);
         $groupes[] = new Groupe(14,0);
-        $groupes[] = new Groupe(15,6);//15
+        $groupes[] = new Groupe(15,5);//15
         $groupes[] = new Groupe(16,5);
-        $groupes[] = new Groupe(17,4);
+        $groupes[] = new Groupe(17,5);
         $groupes[] = new Groupe(18,5);
         $groupes[] = new Groupe(19,4);
         $groupes[] = new Groupe(20,5);//20
         $groupes[] = new Groupe(21,6);
-        $groupes[] = new Groupe(22,4);
+        $groupes[] = new Groupe(22,5);
         $groupes[] = new Groupe(23,5);
         $groupes[] = new Groupe(24,6);
         $groupes[] = new Groupe(25,5);//25
@@ -69,7 +69,7 @@ class LoadUser implements FixtureInterface, ContainerAwareInterface
         $groupes[] = new Groupe(32,0);
         $groupes[] = new Groupe(33,5);
         $groupes[] = new Groupe(34,0);
-        $groupes[] = new Groupe(35,5);//35
+        $groupes[] = new Groupe(35,0);//35
         $groupes[] = new Groupe(36,5);
         $groupes[] = new Groupe(37,0);
         $groupes[] = new Groupe(38,5);
