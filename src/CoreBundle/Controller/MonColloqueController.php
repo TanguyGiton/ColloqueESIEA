@@ -49,16 +49,16 @@ class MonColloqueController extends Controller
             ->findAll();
 
         foreach ($themes as $theme) {
+            $name=$theme->getId();
+            $nbGroupesActuel=0;
             $GroupesActuel = $this
                 ->getDoctrine()
                 ->getRepository('CoreBundle:Groupe')
                 ->findBy(
-                    array('theme' => "$theme"));
-            $cpt=0;
+                    array('theme' => "$name"));
             foreach ($GroupesActuel as $grp) {
-                $cpt+=$grp->getNombreEleve();
+                $nbGroupesActuel+=$grp->getNombreEleve();
             }
-            $nbGroupesActuel = $cpt;
             $theme->setPlacesOccupees($nbGroupesActuel);
         }
 
@@ -88,17 +88,16 @@ class MonColloqueController extends Controller
             throw new NotFoundHttpException("Ce thème n'existe pas.");
         }
 
+        $name = $theme->getId();
         $GroupesActuel = $this
             ->getDoctrine()
             ->getRepository('CoreBundle:Groupe')
             ->findBy(
-                array('theme' => "$theme"));
-            $cpt=0;
-            foreach ($GroupesActuel as $grp) {
-                $cpt+=$grp->getNombreEleve();
-            }
-        $nbGroupesActuel = $cpt;
-
+                array('theme' => "$name"));
+            $nbGroupesActuel=0;
+        foreach ($GroupesActuel as $grp) {
+            $nbGroupesActuel=$nbGroupesActuel+$grp->getNombreEleve();
+        }
 
         if ($nbGroupesActuel >= $theme->getnbGroupes()) {
             $this->addFlash('warning', 'Ce thème est déjà  complet.');

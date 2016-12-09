@@ -24,14 +24,14 @@ class Groupe
     /**
      * @var int
      *
-     * @ORM\Column(name="numero", type="integer")
+     * @ORM\Column(name="nombreEleve", type="integer")
      */
     private $nombreEleve;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="nombreEleve", type="integer")
+     * @ORM\Column(name="numero", type="integer")
      */
     private $numero;
 
@@ -149,15 +149,7 @@ class Groupe
 
         return $this;
     }
-    /**
-     * Get nombreEleve
-     *
-     * @return integer
-     */
-    public function getNombreEleve()
-    {
-        return $this->nombreEleve;
-    }
+
 
     /**
      * Set nombreEleve
@@ -171,5 +163,15 @@ class Groupe
         $this->nombreEleve = $nombreEleve;
 
         return $this;
+    }
+
+    /**
+     * Get nombreEleve
+     *
+     * @return integer
+     */
+    public function getNombreEleve()
+    {
+        return $this->nombreEleve;
     }
 }
